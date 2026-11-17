@@ -285,10 +285,91 @@ def add_detection_to_register(image, location):
 
 
 # --------------------------------------------------
+# FOREST THEME
+# --------------------------------------------------
+
+FOREST_CSS = """
+.gradio-container {
+    background: linear-gradient(135deg, #071b14 0%, #102b20 55%, #173b2b 100%) !important;
+    color: #e8f5e9 !important;
+}
+
+body {
+    background: #071b14 !important;
+}
+
+.gradio-container h1,
+.gradio-container h2,
+.gradio-container h3,
+.gradio-container p,
+.gradio-container label {
+    color: #e8f5e9 !important;
+}
+
+.gradio-container .tabs {
+    border-bottom: 1px solid #315b43 !important;
+}
+
+.gradio-container button {
+    background: #245c3b !important;
+    color: #ffffff !important;
+    border: 1px solid #4d9464 !important;
+    border-radius: 10px !important;
+    transition: background 0.2s ease;
+}
+
+.gradio-container button:hover {
+    background: #347b4e !important;
+}
+
+.gradio-container button.selected,
+.gradio-container button[aria-selected="true"] {
+    background: #347b4e !important;
+    border-color: #9bcf9e !important;
+}
+
+.gradio-container input,
+.gradio-container textarea,
+.gradio-container select {
+    background: #132d22 !important;
+    color: #e8f5e9 !important;
+    border: 1px solid #42694e !important;
+}
+
+.gradio-container .block,
+.gradio-container .panel,
+.gradio-container .form {
+    background: rgba(19, 48, 34, 0.92) !important;
+    border-color: #315b43 !important;
+    border-radius: 14px !important;
+}
+
+.gradio-container table {
+    background: #132d22 !important;
+    color: #e8f5e9 !important;
+}
+
+.gradio-container thead {
+    background: #245c3b !important;
+}
+
+.gradio-container a {
+    color: #a5d6a7 !important;
+}
+"""
+
+# --------------------------------------------------
 # WEBSITE INTERFACE
 # --------------------------------------------------
 
-with gr.Blocks() as dashboard:
+with gr.Blocks(
+    theme=gr.themes.Soft(
+        primary_hue="green",
+        secondary_hue="emerald",
+        neutral_hue="slate"
+    ),
+    css=FOREST_CSS
+) as dashboard:
     gr.Markdown(
         """
         # 🌿 WildGuard AI
