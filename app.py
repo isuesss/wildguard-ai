@@ -68,6 +68,7 @@ model.to(DEVICE)
 model.eval()
 
 print(f"{APP_TITLE}: model loaded on {DEVICE}")
+print("WILDGUARD: PYTHON APP STARTED", flush=True)
 
 
 # --------------------------------------------------
