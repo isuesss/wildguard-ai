@@ -362,14 +362,7 @@ body {
 # WEBSITE INTERFACE
 # --------------------------------------------------
 
-with gr.Blocks(
-    theme=gr.themes.Soft(
-        primary_hue="green",
-        secondary_hue="emerald",
-        neutral_hue="slate"
-    ),
-    css=FOREST_CSS
-) as dashboard:
+with gr.Blocks() as dashboard:
     gr.Markdown(
         """
         # 🌿 WildGuard AI
@@ -528,7 +521,18 @@ with gr.Blocks(
         )
 
 dashboard.queue()
-dashboard.queue()
+
+if __name__ == "__main__":
+    dashboard.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", "7860")),
+        theme=gr.themes.Soft(
+            primary_hue="green",
+            secondary_hue="emerald",
+            neutral_hue="slate"
+        ),
+        css=FOREST_CSS
+    )
 
 if __name__ == "__main__":
     dashboard.launch(
