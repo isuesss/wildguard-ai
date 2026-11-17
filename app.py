@@ -122,7 +122,7 @@ def detect_animals(image):
         return None, "Please upload an image first."
 
     image = image.convert("RGB")
-    image.thumbnail((1000, 1000))
+    image.thumbnail((500, 500))
     tensor = TF.to_tensor(image).to(DEVICE)
 
     with torch.inference_mode():
