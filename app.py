@@ -125,7 +125,7 @@ def detect_animals(image):
     image.thumbnail((500, 500))
     tensor = TF.to_tensor(image).to(DEVICE)
 
-        print("WILDGUARD: DETECTION STARTED", flush=True)
+    print("WILDGUARD: DETECTION STARTED", flush=True)
 
     try:
         with torch.inference_mode():
@@ -136,16 +136,6 @@ def detect_animals(image):
     except Exception as e:
         print(f"WILDGUARD DETECTION ERROR: {e}", flush=True)
         raise
-
-try:
-    with torch.inference_mode():
-        prediction = model([tensor])[0]
-    print("WILDGUARD: DETECTION COMPLETED", flush=True)
-
-except Exception as e:
-    print(f"WILDGUARD DETECTION ERROR: {e}", flush=True)
-    raise
-        prediction = model([tensor])[0]
 
     result_image = image.copy()
     draw = ImageDraw.Draw(result_image)
@@ -177,7 +167,10 @@ except Exception as e:
             stroke_width=1,
             stroke_fill="white"
         )
-        results.append(f"- **{name}** — {confidence:.1%} confidence")
+
+        results.append(
+            f"- **{name}** — {confidence:.1%} confidence"
+        )
 
     if results:
         summary = (
@@ -192,7 +185,6 @@ except Exception as e:
         )
 
     return result_image, summary
-
 
 # --------------------------------------------------
 # DASHBOARD DATA
