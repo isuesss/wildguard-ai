@@ -125,7 +125,16 @@ def detect_animals(image):
     image.thumbnail((500, 500))
     tensor = TF.to_tensor(image).to(DEVICE)
 
+    print("WILDGUARD: DETECTION STARTED", flush=True)
+
+try:
     with torch.inference_mode():
+        prediction = model([tensor])[0]
+    print("WILDGUARD: DETECTION COMPLETED", flush=True)
+
+except Exception as e:
+    print(f"WILDGUARD DETECTION ERROR: {e}", flush=True)
+    raise
         prediction = model([tensor])[0]
 
     result_image = image.copy()
