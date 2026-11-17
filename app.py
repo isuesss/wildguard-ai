@@ -59,14 +59,21 @@ if not os.path.exists(MODEL_PATH):
         "Upload wildlife_epoch_3.pth alongside app.py."
     )
 
+import gc
+
 model = build_model()
 checkpoint = torch.load(
     MODEL_PATH, map_location=DEVICE, weights_only=False
 )
 model.load_state_dict(checkpoint["model_state_dict"], strict=True)
+del checkpoint
+gc.collect()
 model.to(DEVICE)
 model.eval()
 
+# Run detection at a smaller size to save memory
+model.transform.min_size = (480,)
+model.transform.max_size = 640
 print(f"{APP_TITLE}: model loaded on {DEVICE}")
 print("WILDGUARD: PYTHON APP STARTED", flush=True)
 
