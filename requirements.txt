@@ -2,5 +2,8 @@
 gradio>=5.0,<7.0
 pandas>=2.0
 pillow>=10.0
-torch>=2.0
-torchvision>=0.15
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0+cpu
+torchvision==0.26.0+cpu
+
